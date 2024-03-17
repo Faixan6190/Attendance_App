@@ -7,12 +7,11 @@
 }
 .loginForm {
   width: 40%;
-  height: 500px;
   background-color: white;
   border-radius: 20px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  padding: 20px;
+  padding: 30px 20px 80px 20px;
 }
 .inputField {
-  margin-bottom: 20px !important;
+  margin-bottom: 15px !important;
 }
