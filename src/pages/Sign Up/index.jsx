@@ -4,7 +4,7 @@ import { Box, Divider, TextField, Typography, Button, InputAdornment } from "@mu
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 
 
-const Login = () => {
+const Signup = () => {
 
     const [passwordShow, setPasswordShow] = useState(false)
     const [email, setEmail] = useState("")
@@ -22,7 +22,7 @@ const Login = () => {
     return (
         <Box className={styles.loginWrapper}>
             <Box className={styles.loginForm}>
-                <h1>LOGIN</h1>
+                <h1>SIGNUP</h1>
                 <Divider />
                 <Box component={"form"} mt={"80px"} onSubmit={loginHandler}>
                     <TextField label="Email Address" fullWidth variant="outlined" className={styles.inputField} onChange={(e) => setEmail(e.target.value)} />
@@ -33,12 +33,12 @@ const Login = () => {
                             </InputAdornment>
                         )
                     }} />
-                    <Button variant='contained' fullWidth sx={{ mt: "20px" }} type='submit'>LOGIN</Button>
+                    <Button variant='contained' fullWidth sx={{ mt: "20px" }} type='submit'>SIGNUP</Button>
                 </Box>
             </Box>
         </Box>
     )
 }
 
-export default Login
+export default Signup
 
