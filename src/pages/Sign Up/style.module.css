@@ -16,3 +16,7 @@
 .inputField {
   margin-bottom: 15px !important;
 }
+.alreadyAccount {
+  text-align: right !important;
+  cursor: pointer !important;
+}
