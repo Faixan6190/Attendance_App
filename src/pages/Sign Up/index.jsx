@@ -5,8 +5,8 @@ import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
 import { useNavigate } from "react-router-dom"
-// import { Bounce, toast } from "react-toastify";
-// import { ToastAlert } from "../../utils/toast";
+import { ToastAlert } from '../../utils/toast';
+import { Bounce, toast } from "react-toastify";
 
 
 const Signup = () => {
@@ -27,24 +27,16 @@ const Signup = () => {
                 // Signed up 
                 const user = userCredential.user;
                 console.log("user", user)
-                Toast.success('user successfully signup', {
-                    position: "top-right",
-                    autoClose: 5000,
-                    hideProgressBar: false,
-                    closeOnClick: true,
-                    pauseOnHover: true,
-                    draggable: true,
-                    progress: undefined,
-                    theme: "light",
-                    transition: Bounce,
-                });
-                // navigate("/")
-                // ...
+                ToastAlert("successfull signup", "success")
+                setTimeout(() => {
+                    navigate("/")
+                }, 2500);
             })
             .catch((error) => {
                 const errorCode = error.code;
                 const errorMessage = error.message;
                 console.log("errorCode", errorCode)
+                ToastAlert(errorCode, "error")
                 // ..
             });
 

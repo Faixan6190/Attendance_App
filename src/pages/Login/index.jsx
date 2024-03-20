@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import styles from "../Login/style.module.css"
 import { Box, Divider, TextField, Typography, Button, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from '@mui/icons-material';
-
+import { ToastAlert } from "../../utils/toast"
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
 
 const Login = () => {
 
@@ -13,10 +15,24 @@ const Login = () => {
         event.preventDefault()
         console.log("loginHandler")
         if (!email || !password) {
-            console.log("required fielda are missing")
+            console.log("required fields are missing")
             return
         }
         console.log("email, password", email, password)
+        signInWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                ToastAlert("user login", "success")
+                console.log("dashboard page", user)
+                // ...
+            })
+            .catch((error) => {
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                ToastAlert(errorCode, "error")
+
+            });
     }
 
     return (
