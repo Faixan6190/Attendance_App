@@ -16,8 +16,8 @@
 .inputField {
   margin-bottom: 15px !important;
 }
-.cus-forget {
+.cus_forget {
   display: flex !important;
-  align-items: end !important;
+  justify-content: flex-end !important;
   cursor: pointer !important;
 }
