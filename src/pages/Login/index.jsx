@@ -42,7 +42,7 @@ const Login = () => {
                 <Divider />
                 <Box component={"form"} mt={"80px"} onSubmit={loginHandler}>
                     <TextField label="Email Address" fullWidth variant="outlined" className={styles.inputField} onChange={(e) => setEmail(e.target.value)} />
-                    <TextField type={passwordShow ? "text" : "password"} label="Password" fullWidth variant="outlined" onChange={(e) => setPassword(e.target.value)} helperText={<Typography textAlign={"right"} sx={{ cursor: "pointer" }}>Forget Password</Typography>} InputProps={{
+                    <TextField type={passwordShow ? "text" : "password"} label="Password" fullWidth variant="outlined" onChange={(e) => setPassword(e.target.value)} helperText={<span className='cus-forget'>Forget Password</span>} InputProps={{
                         endAdornment: (
                             <InputAdornment position="end" onClick={() => setPasswordShow(!passwordShow)} >
                                 {!passwordShow ? <VisibilityOff /> : <Visibility />}
