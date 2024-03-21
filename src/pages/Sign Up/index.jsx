@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import styles from "../Login/style.module.css"
+import styles from "./style.module.css"
 import { Box, Divider, TextField, Typography, Button, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from '../../firebase';
-import { useNavigate } from "react-router-dom"
+import { NavLink, useNavigate } from "react-router-dom"
 import { ToastAlert } from '../../utils/toast';
 import { Bounce, toast } from "react-toastify";
 
@@ -50,7 +50,7 @@ const Signup = () => {
                 <Divider />
                 <Box component={"form"} mt={"80px"} onSubmit={loginHandler}>
                     <TextField label="Email Address" fullWidth variant="outlined" className={styles.inputField} onChange={(e) => setEmail(e.target.value)} />
-                    <TextField type={passwordShow ? "text" : "password"} label="Password" fullWidth variant="outlined" onChange={(e) => setPassword(e.target.value)} helperText={<Typography textAlign={"right"} sx={{ cursor: "pointer" }}>Already Account?</Typography>} InputProps={{
+                    <TextField type={passwordShow ? "text" : "password"} label="Password" fullWidth variant="outlined" onChange={(e) => setPassword(e.target.value)} helperText={<span className={styles.cus_Forget}><NavLink className={styles.cusNavLink} to="/">Already Account?</NavLink></span>} InputProps={{
                         endAdornment: (
                             <InputAdornment position="end" onClick={() => setPasswordShow(!passwordShow)} >
                                 {!passwordShow ? <VisibilityOff /> : <Visibility />}

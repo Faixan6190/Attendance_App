@@ -17,7 +17,7 @@ export const ToastAlert = (message, type) => {
     case "error":
       return toast.error(message, {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,
@@ -29,7 +29,7 @@ export const ToastAlert = (message, type) => {
     case "warning":
       return toast.warn(message, {
         position: "top-right",
-        autoClose: 5000,
+        autoClose: 2000,
         hideProgressBar: false,
         closeOnClick: true,
         pauseOnHover: true,

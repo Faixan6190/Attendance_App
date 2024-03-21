@@ -16,3 +16,12 @@
 .inputField {
   margin-bottom: 15px !important;
 }
+.cus_Forget {
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+.cusNavLink {
+  text-decoration: none;
+  color: #757575;
+}

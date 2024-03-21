@@ -17,7 +17,15 @@
   margin-bottom: 15px !important;
 }
 .cus_forget {
-  display: flex !important;
-  justify-content: flex-end !important;
-  cursor: pointer !important;
+  display: flex;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+.cusPara {
+  margin-top: 10px;
+  color: #757575;
+}
+.cusNavLink {
+  text-decoration: none;
+  color: #757575;
 }

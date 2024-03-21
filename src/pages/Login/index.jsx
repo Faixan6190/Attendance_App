@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import styles from "../Login/style.module.css"
+import styles from "./style.module.css"
 import { Box, Divider, TextField, Typography, Button, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { ToastAlert } from "../../utils/toast"
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
+import { NavLink } from 'react-router-dom';
+
 
 const Login = () => {
 
@@ -16,6 +18,7 @@ const Login = () => {
         console.log("loginHandler")
         if (!email || !password) {
             console.log("required fields are missing")
+            ToastAlert("required fields are missing", "warning")
             return
         }
         console.log("email, password", email, password)
@@ -50,6 +53,7 @@ const Login = () => {
                         )
                     }} />
                     <Button variant='contained' fullWidth sx={{ mt: "20px" }} type='submit'>LOGIN</Button>
+                    <p className={styles.cusPara}>Don't have an Account?<NavLink to="/signup" className={styles.cusNavLink}> Register</NavLink></p>
                 </Box>
             </Box>
         </Box >
