@@ -5,7 +5,8 @@ import { Routes, Route } from "react-router-dom"
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce, ToastContainer } from "react-toastify";
 import Dashboard from "./pages/Dashboard";
-import Example from "./Example";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import AuthRoute from "./routes/AuthRoute";
 
 
 
@@ -15,10 +16,13 @@ function App() {
   return (
     <>
       <Routes>
-        <Route index element={<Login />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        {/* <Navbar /> */}
+        <Route element={<AuthRoute />}>
+          <Route index element={<Login />} />
+          <Route path="/signup" element={<Signup />} />
+        </Route>
+        <Route element={<ProtectedRoute />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
       </Routes>
       <ToastContainer
         position="top-right"
