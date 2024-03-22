@@ -5,6 +5,7 @@ import { Routes, Route } from "react-router-dom"
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce, ToastContainer } from "react-toastify";
 import Dashboard from "./pages/Dashboard";
+import Example from "./Example";
 
 
 
@@ -35,5 +36,6 @@ function App() {
     </>
   );
 }
+
 
 export default App;
