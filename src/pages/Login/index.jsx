@@ -6,10 +6,11 @@ import { ToastAlert } from "../../utils/toast"
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { NavLink } from 'react-router-dom';
+import { useNavigate } from "react-router-dom"
 
 
 const Login = () => {
-
+    const navigate = useNavigate()
     const [passwordShow, setPasswordShow] = useState(false)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -25,9 +26,12 @@ const Login = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 // Signed in 
-                const user = userCredential.user;
-                ToastAlert("user login", "success")
+                const user = userCredential.user.uid;
+                localStorage.setItem("uid", user)
                 console.log("dashboard page", user)
+                navigate("/dashboard")
+                ToastAlert("user login", "success")
+
                 // ...
             })
             .catch((error) => {

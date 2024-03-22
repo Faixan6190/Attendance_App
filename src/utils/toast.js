@@ -3,7 +3,7 @@ import { Bounce, toast } from "react-toastify";
 export const ToastAlert = (message, type) => {
   switch (type) {
     case "success":
-      return toast.success("User successfully signup", {
+      return toast.success(message, {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
