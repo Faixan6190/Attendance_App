@@ -8,10 +8,6 @@ import Dashboard from "./pages/Dashboard";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import AuthRoute from "./routes/AuthRoute";
 
-
-
-// import Navbar from "./components/Navbar/Navbar";
-
 function App() {
   return (
     <>

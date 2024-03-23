@@ -3,8 +3,8 @@ import { Outlet, Navigate } from 'react-router-dom'
 
 const AuthRoute = () => {
     return (
-        !localStorage.getItem("uid") ? < Outlet /> : <Navigate to={"/dashboard"} />
+        !localStorage.getItem("uid") ? < Outlet /> : <Navigate to={"/"} />
     )
 }
 
-export default AuthRoute
+export default AuthRoute;
