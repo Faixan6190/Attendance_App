@@ -15,9 +15,9 @@ const Signup = () => {
     const [passwordShow, setPasswordShow] = useState(false)
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
-    const loginHandler = (event) => {
+    const signupHandler = (event) => {
         event.preventDefault()
-        console.log("loginHandler")
+        console.log("signupHandler")
         if (!email || !password) {
             console.log("required fielda are missing")
             return
@@ -48,7 +48,7 @@ const Signup = () => {
             <Box className={styles.loginForm}>
                 <h1>SIGNUP</h1>
                 <Divider />
-                <Box component={"form"} mt={"80px"} onSubmit={loginHandler}>
+                <Box component={"form"} mt={"80px"} onSubmit={signupHandler}>
                     <TextField label="Email Address" fullWidth variant="outlined" className={styles.inputField} onChange={(e) => setEmail(e.target.value)} />
                     <TextField type={passwordShow ? "text" : "password"} label="Password" fullWidth variant="outlined" onChange={(e) => setPassword(e.target.value)} helperText={<span className={styles.cus_Forget}><NavLink className={styles.cusNavLink} to="/">Already Account?</NavLink></span>} InputProps={{
                         endAdornment: (
