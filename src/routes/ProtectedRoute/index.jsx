@@ -1,10 +1,23 @@
 import React from 'react'
 import { Outlet, Navigate } from 'react-router-dom'
 
-const ProtectedRoute = () => {
+const AdminProtectedRoute = () => {
     return (
-        localStorage.getItem("uid") ? < Outlet /> : <Navigate to={"/"} />
+        localStorage.getItem("uid") ?
+            JSON.parse(localStorage.getItem("user")).type == "admin" ?
+                < Outlet /> : <Navigate to={"/portal"} /> : <Navigate to={"/"} />
     )
 }
 
-export default ProtectedRoute
+const StdProtectedRoute = () => {
+    return (
+        localStorage.getItem("uid") ?
+            JSON.parse(localStorage.getItem("user")).type == "std" ?
+                < Outlet /> : <Navigate to={"/dashboard"} /> : <Navigate to={"/"} />
+    )
+}
+
+export default AdminProtectedRoute
+export {
+    StdProtectedRoute
+}

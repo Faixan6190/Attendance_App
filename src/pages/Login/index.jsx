@@ -30,8 +30,12 @@ const Login = () => {
                 console.log(userID, "userId")
                 const userData = await getDoc(doc(db, "users", userID))
                 console.log(userData.data(), "userData")
-                // localStorage.setItem("uid", userID)
-                // navigate("/dashboard")
+                localStorage.setItem("uid", userID)
+                localStorage.setItem("user", JSON.stringify(userData.data()))
+                return
+                if (userData.type == "admin") {
+                    navigate("/dashboard")
+                }
                 // ToastAlert("user login", "success")
 
                 // ...

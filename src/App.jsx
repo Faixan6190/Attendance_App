@@ -5,8 +5,8 @@ import { Routes, Route } from "react-router-dom"
 import 'react-toastify/dist/ReactToastify.css';
 import { Bounce, ToastContainer } from "react-toastify";
 import Dashboard from "./pages/Dashboard";
-import ProtectedRoute from "./routes/ProtectedRoute";
 import AuthRoute from "./routes/AuthRoute";
+import AdminProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
   return (
@@ -16,7 +16,7 @@ function App() {
           <Route index element={<Login />} />
           <Route path="/signup" element={<Signup />} />
         </Route>
-        <Route element={<ProtectedRoute />}>
+        <Route element={<AdminProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
         </Route>
       </Routes>
