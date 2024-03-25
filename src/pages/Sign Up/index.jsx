@@ -3,10 +3,11 @@ import styles from "./style.module.css"
 import { Box, Divider, TextField, Typography, Button, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from '@mui/icons-material';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../../firebase';
+import { auth, db } from '../../firebase';
 import { NavLink, useNavigate } from "react-router-dom"
 import { ToastAlert } from '../../utils/toast';
 import { Bounce, toast } from "react-toastify";
+import { addDoc, collection, doc, setDoc } from 'firebase/firestore';
 
 
 const Signup = () => {
@@ -22,15 +23,24 @@ const Signup = () => {
             console.log("required fielda are missing")
             return
         }
+
         createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
+            .then(async (userCredential) => {
                 // Signed up 
                 const user = userCredential.user;
-                console.log("user", user)
-                ToastAlert("successfull signup", "success")
-                setTimeout(() => {
-                    navigate("/")
-                }, 2500);
+                console.log("user", user.uid)
+                const obj = {
+                    name: "Super Admin",
+                    email,
+                    password,
+                    type: "admin"
+                }
+                const createUser = await setDoc(doc(db, "users", user.uid), obj)
+                console.log(createUser)
+                // ToastAlert("successfull signup", "success")
+                // setTimeout(() => {
+                //     navigate("/")
+                // }, 2500);
             })
             .catch((error) => {
                 const errorCode = error.code;

@@ -27,7 +27,7 @@ const Login = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then(async (userCredential) => {
                 const userID = userCredential.user.uid;
-                console.log("userID", userID)
+                console.log(userID, "userId")
                 const userData = await getDoc(doc(db, "users", userID))
                 console.log(userData.data(), "userData")
                 // localStorage.setItem("uid", userID)
