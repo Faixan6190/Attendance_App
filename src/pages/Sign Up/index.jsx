@@ -58,6 +58,7 @@ const Signup = () => {
                         )
                     }} />
                     <Button variant='contained' fullWidth sx={{ mt: "20px" }} type='submit'>SIGNUP</Button>
+                    <Button variant='contained' fullWidth sx={{ mt: "20px" }} type='submit'>SIGNUP</Button>
                 </Box>
             </Box>
         </Box>
