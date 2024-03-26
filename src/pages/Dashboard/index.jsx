@@ -1,7 +1,7 @@
 import { addDoc, collection } from 'firebase/firestore'
 import React, { useState } from 'react'
 import { db } from '../../firebase'
-import { getDatabase, ref, set } from 'firebase/database'
+import { AdminLayout } from '../../components'
 
 const Dashboard = () => {
 
@@ -21,7 +21,7 @@ const Dashboard = () => {
 
     return (
         <>
-            <div style={{
+            {/* <div style={{
                 display: "flex",
                 justifyContent: "center",
                 alignContent: "center",
@@ -29,7 +29,8 @@ const Dashboard = () => {
             }}>
                 <input onChange={(e) => setTodoValue(e.target.value)} type="text" placeholder='Enter Todo' />
                 <button onClick={addTodo}>ADD</button>
-            </div>
+            </div> */}
+            <AdminLayout />
         </>
     )
 

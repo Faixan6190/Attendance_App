@@ -32,11 +32,12 @@ const Login = () => {
                 console.log(userData.data(), "userData")
                 localStorage.setItem("uid", userID)
                 localStorage.setItem("user", JSON.stringify(userData.data()))
-                return
+                ToastAlert("user login", "success")
                 if (userData.type == "admin") {
                     navigate("/dashboard")
+                } else {
+                    navigate("/portal")
                 }
-                // ToastAlert("user login", "success")
 
                 // ...
             })

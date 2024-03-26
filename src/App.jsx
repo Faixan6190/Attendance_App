@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { Bounce, ToastContainer } from "react-toastify";
 import Dashboard from "./pages/Dashboard";
 import AuthRoute from "./routes/AuthRoute";
-import AdminProtectedRoute from "./routes/ProtectedRoute";
+import AdminProtectedRoute, { StdProtectedRoute } from "./routes/ProtectedRoute";
 
 function App() {
   return (
@@ -18,6 +18,9 @@ function App() {
         </Route>
         <Route element={<AdminProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
+        </Route>
+        <Route element={<StdProtectedRoute />}>
+          <Route path="/portal" element={<Portal />} />
         </Route>
       </Routes>
       <ToastContainer
@@ -37,5 +40,8 @@ function App() {
   );
 }
 
+const Portal = () => {
+  return <h1>Portal</h1>
+}
 
 export default App;
