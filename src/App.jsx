@@ -7,6 +7,7 @@ import { Bounce, ToastContainer } from "react-toastify";
 import Dashboard from "./pages/Dashboard";
 import AuthRoute from "./routes/AuthRoute";
 import AdminProtectedRoute, { StdProtectedRoute } from "./routes/ProtectedRoute";
+import StdList from "./pages/StdList"
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         </Route>
         <Route element={<AdminProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/stdlist" element={<StdList />} />
         </Route>
         <Route element={<StdProtectedRoute />}>
           <Route path="/portal" element={<Portal />} />
