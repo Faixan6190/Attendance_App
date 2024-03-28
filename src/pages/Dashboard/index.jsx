@@ -3,7 +3,9 @@ import React, { useState } from 'react'
 import { db } from '../../firebase'
 import { AdminLayout, InputField } from '../../components'
 import { Button, Divider, Box, Grid, Container } from '@mui/material'
-import LoadingButton from '@mui/lab/LoadingButton';
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+import { styled } from '@mui/material/styles';
+
 
 
 const Dashboard = () => {
@@ -19,6 +21,18 @@ const Dashboard = () => {
             console.error("Error adding document: ", e);
         }
     }
+
+    const VisuallyHiddenInput = styled('input')({
+        clip: 'rect(0 0 0 0)',
+        clipPath: 'inset(50%)',
+        height: 1,
+        overflow: 'hidden',
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        whiteSpace: 'nowrap',
+        width: 1,
+    });
 
 
 
@@ -39,19 +53,29 @@ const Dashboard = () => {
                 <Container>
                     <Grid container mt={2} columnSpacing={5} rowSpacing={3}>
                         <Grid item sm={6}>
-                            <InputField label="Full Name" />
+                            <InputField id="fullName" label="Full Name" />
                         </Grid>
                         <Grid item sm={6}>
-                            <InputField label="Course" />
+                            <InputField id="course" label="Course" />
                         </Grid>
                         <Grid item sm={6}>
-                            <InputField label="Email" />
+                            <InputField id="email" label="Email" />
                         </Grid>
                         <Grid item sm={6}>
-                            <InputField label="Password" type="password" />
+                            <InputField id="Password" label="Password" type="password" />
                         </Grid>
                         <Grid item sm={12}>
-                            <input type="file" />
+                            {/* <input type="file" /> */}
+                            <Button
+                                component="label"
+                                role={undefined}
+                                variant="contained"
+                                tabIndex={-1}
+                                startIcon={<CloudUploadIcon />}
+                            >
+                                Upload file
+                                <VisuallyHiddenInput type="file" />
+                            </Button>
                         </Grid>
                         <Grid item sm={12}>
                             <Button variant="contained" sx={{ width: "100%" }}>Add Student</Button>
