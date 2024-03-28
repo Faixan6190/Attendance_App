@@ -2,7 +2,9 @@ import { addDoc, collection } from 'firebase/firestore'
 import React, { useState } from 'react'
 import { db } from '../../firebase'
 import { AdminLayout, InputField } from '../../components'
-import { Divider, Box, Grid } from '@mui/material'
+import { Button, Divider, Box, Grid, Container } from '@mui/material'
+import LoadingButton from '@mui/lab/LoadingButton';
+
 
 const Dashboard = () => {
 
@@ -34,15 +36,28 @@ const Dashboard = () => {
             <AdminLayout>
                 <h1>Add Student</h1>
                 <Divider />
-                <Grid container>
-                    <Grid item>
-
+                <Container>
+                    <Grid container mt={2} columnSpacing={5} rowSpacing={3}>
+                        <Grid item sm={6}>
+                            <InputField label="Full Name" />
+                        </Grid>
+                        <Grid item sm={6}>
+                            <InputField label="Course" />
+                        </Grid>
+                        <Grid item sm={6}>
+                            <InputField label="Email" />
+                        </Grid>
+                        <Grid item sm={6}>
+                            <InputField label="Password" type="password" />
+                        </Grid>
+                        <Grid item sm={12}>
+                            <input type="file" />
+                        </Grid>
+                        <Grid item sm={12}>
+                            <Button variant="contained" sx={{ width: "100%" }}>Add Student</Button>
+                        </Grid>
                     </Grid>
-                    <InputField label="Full Name" />
-                    <InputField label="Course" />
-                    <InputField label="Email" />
-                    <InputField label="Password" />
-                </Grid>
+                </Container>
             </AdminLayout >
         </>
     )
