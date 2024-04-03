@@ -17,10 +17,6 @@ const StdProtectedRoute = () => {
     )
 }
 
-const Header = () => {
-    console.log(Header, "Header")
-}
-
 export default AdminProtectedRoute
 export {
     StdProtectedRoute
