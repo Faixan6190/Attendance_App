@@ -37,7 +37,6 @@ export const ToastAlert = (message, type) => {
         progress: undefined,
         theme: "light",
         transition: Bounce,
-        fjsklf
       });
   }
 };
