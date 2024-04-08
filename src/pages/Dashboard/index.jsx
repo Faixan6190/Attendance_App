@@ -35,7 +35,7 @@ const Dashboard = () => {
     });
 
     const [fullName, setFullName] = useState("")
-
+    const [course, setCourse] = useState("")
 
     return (
         <>
