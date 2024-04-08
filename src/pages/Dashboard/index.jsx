@@ -34,6 +34,7 @@ const Dashboard = () => {
         width: 1,
     });
 
+    const [fullName, setFullName] = useState("")
 
 
     return (
@@ -53,7 +54,7 @@ const Dashboard = () => {
                 <Container>
                     <Grid container mt={2} columnSpacing={5} rowSpacing={3}>
                         <Grid item sm={6}>
-                            <InputField id="fullName" label="Full Name" />
+                            <InputField id="fullName" label="Full Name" onChange={(e) => console.log(e.target.value)} />
                         </Grid>
                         <Grid item sm={6}>
                             <InputField id="course" label="Course" />
