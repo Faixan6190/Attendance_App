@@ -53,7 +53,6 @@ const Dashboard = () => {
             console.log(stdData.user.uid, "stdData")
             const obj = {
                 email,
-                password,
                 name: fullName,
                 type: "std",
                 course,
