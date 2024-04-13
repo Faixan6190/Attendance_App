@@ -1,4 +1,4 @@
-import { addDoc, collection } from 'firebase/firestore'
+import { addDoc, collection, doc, setDoc } from 'firebase/firestore'
 import React, { useState } from 'react'
 import { auth, db } from '../../firebase'
 import { AdminLayout, InputField } from '../../components'
@@ -49,7 +49,20 @@ const Dashboard = () => {
                 return
             }
             const stdData = await createUserWithEmailAndPassword(auth, email, password)
-            console.log(stdData, "stdData")
+            const userID = stdData.user.uid
+            console.log(stdData.user.uid, "stdData")
+            const obj = {
+                email,
+                password,
+                name: fullName,
+                type: "std",
+                course,
+            }
+
+            await setDoc(doc(db, "users", userID), obj)
+            ToastAlert("Std Created!", "success")
+
+
         } catch (error) {
             ToastAlert(error.code || error.message, "error")
         }
