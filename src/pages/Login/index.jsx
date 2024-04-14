@@ -39,7 +39,6 @@ const Login = () => {
                     navigate("/portal")
                 }
 
-                // ...
             })
             .catch((error) => {
                 const errorCode = error.code;
