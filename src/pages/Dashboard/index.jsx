@@ -13,18 +13,6 @@ import { uploadFile } from '../../utils/uploadImage'
 
 const Dashboard = () => {
 
-    const [todoValue, setTodoValue] = useState("")
-    const addTodo = async () => {
-        try {
-            const docRef = await addDoc(collection(db, "todos"), {
-                value: todoValue
-            });
-            console.log("Document written with ID: ", docRef.id);
-        } catch (e) {
-            console.error("Error adding document: ", e);
-        }
-    }
-
     const VisuallyHiddenInput = styled('input')({
         clip: 'rect(0 0 0 0)',
         clipPath: 'inset(50%)',
@@ -43,33 +31,27 @@ const Dashboard = () => {
     const [password, setPassword] = useState("")
     const [stdimage, setstdimage] = useState("")
 
-    console.log("stdimage", stdimage)
+    // console.log("stdimage", stdimage)
 
     const handleAddStd = async () => {
         try {
-            // console.log("handleAddStd", fullName, course, email, password)
-            // if (!fullName || !course || !email || !password) {
-            //     ToastAlert("required field are missing", "error")
-            //     return
-            // }
-            // const stdData = await createUserWithEmailAndPassword(auth, email, password)
-            // const userID = stdData.user.uid
+            if (!fullName || !course || !email || !password) {
+                ToastAlert("required field are missing", "error")
+                return
+            }
+            const stdData = await createUserWithEmailAndPassword(auth, email, password)
+            const userID = stdData.user.uid
             //Image
             const imageURL = await uploadFile(stdimage)
-            console.log(imageURL, "imageurl")
-            return
-            console.log(stdData.user.uid, "stdData")
             const obj = {
                 email,
                 name: fullName,
                 type: "std",
                 course,
+                imageURL
             }
-
             await setDoc(doc(db, "users", userID), obj)
             ToastAlert("Std Created!", "success")
-
-
         } catch (error) {
             ToastAlert(error.code || error.message, "error")
         }
