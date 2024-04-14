@@ -40,6 +40,9 @@ const Dashboard = () => {
     const [course, setCourse] = useState("")
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [stdimage, setstdimage] = useState("")
+
+    console.log("stdimage", setstdimage)
 
     const handleAddStd = async () => {
         try {
@@ -96,7 +99,7 @@ const Dashboard = () => {
                                 startIcon={<CloudUploadIcon />}
                             >
                                 Upload file
-                                <VisuallyHiddenInput type="file" onChange={(e) => console.log("e", e.target.files)} />
+                                <VisuallyHiddenInput type="file" onChange={(e) => setstdimage(e.target.files[0])} />
                             </Button>
                         </Grid>
                         <Grid item sm={12}>
