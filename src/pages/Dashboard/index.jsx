@@ -8,6 +8,7 @@ import { styled } from '@mui/material/styles';
 import "./dashboard.css"
 import { ToastAlert } from "../../utils/toast"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
+import { uploadFile } from '../../utils/uploadImage'
 
 
 const Dashboard = () => {
@@ -42,17 +43,21 @@ const Dashboard = () => {
     const [password, setPassword] = useState("")
     const [stdimage, setstdimage] = useState("")
 
-    console.log("stdimage", setstdimage)
+    console.log("stdimage", stdimage)
 
     const handleAddStd = async () => {
         try {
             // console.log("handleAddStd", fullName, course, email, password)
-            if (!fullName || !course || !email || !password) {
-                ToastAlert("required field are missing", "error")
-                return
-            }
-            const stdData = await createUserWithEmailAndPassword(auth, email, password)
-            const userID = stdData.user.uid
+            // if (!fullName || !course || !email || !password) {
+            //     ToastAlert("required field are missing", "error")
+            //     return
+            // }
+            // const stdData = await createUserWithEmailAndPassword(auth, email, password)
+            // const userID = stdData.user.uid
+            //Image
+            const imageURL = await uploadFile(stdimage)
+            console.log(imageURL, "imageurl")
+            return
             console.log(stdData.user.uid, "stdData")
             const obj = {
                 email,
