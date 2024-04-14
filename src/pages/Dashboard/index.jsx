@@ -69,15 +69,6 @@ const Dashboard = () => {
 
     return (
         <>
-            {/* <div style={{
-                display: "flex",
-                justifyContent: "center",
-                alignContent: "center",
-                marginTop: "20px"
-            }}>
-                <input onChange={(e) => setTodoValue(e.target.value)} type="text" placeholder='Enter Todo' />
-                <button onClick={addTodo}>ADD</button>
-            </div> */}
             <AdminLayout>
                 <h1>Add Student</h1>
                 <Divider />
@@ -105,7 +96,7 @@ const Dashboard = () => {
                                 startIcon={<CloudUploadIcon />}
                             >
                                 Upload file
-                                <VisuallyHiddenInput type="file" />
+                                <VisuallyHiddenInput type="file" onChange={(e) => console.log("e", e.target.files)} />
                             </Button>
                         </Grid>
                         <Grid item sm={12}>

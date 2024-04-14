@@ -37,10 +37,10 @@ const Signup = () => {
                 }
                 const createUser = await setDoc(doc(db, "users", user.uid), obj)
                 console.log(createUser)
-                // ToastAlert("successfull signup", "success")
-                // setTimeout(() => {
-                //     navigate("/")
-                // }, 2500);
+                ToastAlert("successfull signup", "success")
+                setTimeout(() => {
+                    navigate("/")
+                }, 2500);
             })
             .catch((error) => {
                 const errorCode = error.code;
