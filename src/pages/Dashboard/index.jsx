@@ -31,7 +31,7 @@ const Dashboard = () => {
     const [password, setPassword] = useState("")
     const [stdimage, setstdimage] = useState("")
 
-    // console.log("stdimage", stdimage)
+    console.log("stdimage", stdimage)
 
     const handleAddStd = async () => {
         try {
