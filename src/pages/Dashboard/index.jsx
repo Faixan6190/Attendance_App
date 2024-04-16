@@ -9,7 +9,7 @@ import "./dashboard.css"
 import { ToastAlert } from "../../utils/toast"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { uploadFile } from '../../utils/uploadImage'
-import { loader } from '../../utils/loaderSpinner'
+import { Loader } from '../../utils/LoaderSpinner'
 
 
 const Dashboard = () => {
@@ -96,8 +96,8 @@ const Dashboard = () => {
                         </Grid>
                         <Grid item sm={12}>
                             {/* <button onClick={handleAddStd} disabled={isLoading} className="button" style={{ verticalAlign: "middle" }}>   {isLoading ? 'Loading...' : ''}<span>Add Student</span></button> */}
-                            <button onClick={handleAddStd} disabled={isLoading} className="button" style={{ verticalAlign: "middle" }}>
-                                {isLoading ? <span><loader /></span> : <span>Add Student</span>}
+                            <button onClick={handleAddStd} className="button" style={{ verticalAlign: "middle" }}>
+                                {isLoading ? <span><Loader /></span> : <span>Add Student</span>}
                             </button>
                         </Grid>
                     </Grid>
