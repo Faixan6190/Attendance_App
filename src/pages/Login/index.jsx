@@ -65,7 +65,7 @@ const Login = () => {
                         )
                     }} />
                     <Button variant='contained' fullWidth sx={{ mt: "20px" }} type='submit'>LOGIN</Button>
-                    <p className={styles.cusPara}>Don't have an Account?<NavLink to="/signup" className={styles.cusNavLink}> Register</NavLink></p>
+                    {/* <p className={styles.cusPara}>Don't have an Account?<NavLink to="/signup" className={styles.cusNavLink}> Register</NavLink></p> */}
                 </Box>
             </Box>
         </Box >

@@ -9,6 +9,7 @@ import "./dashboard.css"
 import { ToastAlert } from "../../utils/toast"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { uploadFile } from '../../utils/uploadImage'
+import { ThreeDots } from 'react-loader-spinner'
 
 
 const Dashboard = () => {
