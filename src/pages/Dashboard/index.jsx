@@ -9,6 +9,7 @@ import "./dashboard.css"
 import { ToastAlert } from "../../utils/toast"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { uploadFile } from '../../utils/uploadImage'
+import { loader } from '../../utils/loaderSpinner'
 
 
 const Dashboard = () => {
@@ -30,12 +31,14 @@ const Dashboard = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [stdimage, setstdimage] = useState("")
-    const [loading, setLoading] = useState(false)
+    const [isLoading, setIsLoading] = useState(false);
+
 
     // console.log("stdimage", stdimage)
 
     const handleAddStd = async () => {
         try {
+            setIsLoading(true)
             if (!fullName || !course || !email || !password) {
                 ToastAlert("required field are missing", "error")
                 return
@@ -56,7 +59,7 @@ const Dashboard = () => {
         } catch (error) {
             ToastAlert(error.code || error.message, "error")
         } finally {
-            setLoading(false); // Stop loading
+            setIsLoading(false)
         }
     }
 
@@ -92,7 +95,10 @@ const Dashboard = () => {
                             </Button>
                         </Grid>
                         <Grid item sm={12}>
-                            <button onClick={handleAddStd} className="button" style={{ verticalAlign: "middle" }}><span>Add Student</span></button>
+                            {/* <button onClick={handleAddStd} disabled={isLoading} className="button" style={{ verticalAlign: "middle" }}>   {isLoading ? 'Loading...' : ''}<span>Add Student</span></button> */}
+                            <button onClick={handleAddStd} disabled={isLoading} className="button" style={{ verticalAlign: "middle" }}>
+                                {isLoading ? <span><loader /></span> : <span>Add Student</span>}
+                            </button>
                         </Grid>
                     </Grid>
                 </Container>
