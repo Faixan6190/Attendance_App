@@ -9,7 +9,6 @@ import "./dashboard.css"
 import { ToastAlert } from "../../utils/toast"
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { uploadFile } from '../../utils/uploadImage'
-import { ThreeDots } from 'react-loader-spinner'
 
 
 const Dashboard = () => {
@@ -31,6 +30,7 @@ const Dashboard = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [stdimage, setstdimage] = useState("")
+    const [loading, setLoading] = useState(false)
 
     // console.log("stdimage", stdimage)
 
@@ -55,6 +55,8 @@ const Dashboard = () => {
             ToastAlert("Std Created!", "success")
         } catch (error) {
             ToastAlert(error.code || error.message, "error")
+        } finally {
+            setLoading(false); // Stop loading
         }
     }
 
@@ -78,7 +80,6 @@ const Dashboard = () => {
                             <InputField id="Password" label="Password" type="password" onChange={(e) => setPassword(e.target.value)} />
                         </Grid>
                         <Grid item sm={12}>
-                            {/* <input type="file" /> */}
                             <Button
                                 component="label"
                                 role={undefined}
@@ -92,7 +93,6 @@ const Dashboard = () => {
                         </Grid>
                         <Grid item sm={12}>
                             <button onClick={handleAddStd} className="button" style={{ verticalAlign: "middle" }}><span>Add Student</span></button>
-                            {/* <Button variant="contained" sx={{ width: "100%" }}>Add Student</Button> */}
                         </Grid>
                     </Grid>
                 </Container>
