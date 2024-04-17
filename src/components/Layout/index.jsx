@@ -21,6 +21,21 @@ import { NavLink } from 'react-router-dom';
 
 const drawerWidth = 240;
 
+const MenuItems = [
+    {
+        title: "Add Student",
+        href: "/dashboard"
+    },
+    {
+        title: "Students",
+        href: "/stdlist"
+    },
+    {
+        title: "Attendance",
+        href: "/attendance"
+    }
+]
+
 function AdminLayout(props) {
     const { window, children } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
@@ -46,15 +61,17 @@ function AdminLayout(props) {
             <Toolbar />
             <Divider />
             <List>
-                {['Add Student', 'Students', 'Attendance',].map((text, index) => (
-                    <ListItem key={text} disablePadding>
-                        <ListItemButton>
-                            <ListItemIcon>
-                                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                            </ListItemIcon>
-                            <ListItemText primary={text} />
-                        </ListItemButton>
-                    </ListItem>
+                {MenuItems.map((obj, index) => (
+                    <NavLink to={obj.href}>
+                        <ListItem key={index} disablePadding>
+                            <ListItemButton>
+                                <ListItemIcon>
+                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                </ListItemIcon>
+                                <ListItemText primary={obj.title} />
+                            </ListItemButton>
+                        </ListItem>
+                    </NavLink>
                 ))}
             </List>
         </div>
