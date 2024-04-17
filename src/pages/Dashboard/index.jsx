@@ -71,16 +71,16 @@ const Dashboard = () => {
                 <Container>
                     <Grid container mt={2} columnSpacing={5} rowSpacing={3}>
                         <Grid item sm={6}>
-                            <InputField id="fullName" label="Full Name" onChange={(e) => setFullName(e.target.value)} />
+                            <InputField id="fullName" label="Full Name" value={fullName} onChange={(e) => setFullName(e.target.value)} />
                         </Grid>
                         <Grid item sm={6}>
-                            <InputField id="course" label="Course" onChange={(e) => setCourse(e.target.value)} />
+                            <InputField id="course" label="Course" value={course} onChange={(e) => setCourse(e.target.value)} />
                         </Grid>
                         <Grid item sm={6}>
-                            <InputField id="email" label="Email" onChange={(e) => setEmail(e.target.value)} />
+                            <InputField id="email" label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
                         </Grid>
                         <Grid item sm={6}>
-                            <InputField id="Password" label="Password" type="password" onChange={(e) => setPassword(e.target.value)} />
+                            <InputField id="Password" value={password} label="Password" type="password" onChange={(e) => setPassword(e.target.value)} />
                         </Grid>
                         <Grid item sm={12}>
                             <Button
