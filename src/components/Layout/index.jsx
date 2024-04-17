@@ -24,18 +24,15 @@ const drawerWidth = 240;
 const MenuItems = [
     {
         title: "Add Student",
-        href: "/dashboard",
-        id: "1"
+        href: "/dashboard"
     },
     {
         title: "Students",
-        href: "/stdlist",
-        id: "2"
+        href: "/stdlist"
     },
     {
         title: "Attendance",
-        href: "/attendance",
-        id: "3"
+        href: "/attendance"
     }
 ]
 
