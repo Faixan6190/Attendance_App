@@ -70,7 +70,7 @@ function AdminLayout(props) {
                         fontWeight: "500",
                         textDecoration: "none"
                     }} to={obj.href}>
-                        <ListItem key={MenuItems.id} disablePadding>
+                        <ListItem disablePadding key={index}>
                             <ListItemButton>
                                 <ListItemIcon>
                                     {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
