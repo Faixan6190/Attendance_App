@@ -1,9 +1,13 @@
 import React from 'react'
 import { AdminLayout } from '../../components'
+import { Divider } from '@mui/material'
 
 const StdList = () => {
     return (
-        <AdminLayout>StdList</AdminLayout >
+        <AdminLayout>
+            <h1>Student</h1>
+            <Divider />
+        </AdminLayout >
     )
 }
 

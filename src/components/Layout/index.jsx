@@ -24,15 +24,18 @@ const drawerWidth = 240;
 const MenuItems = [
     {
         title: "Add Student",
-        href: "/dashboard"
+        href: "/dashboard",
+        id: "1"
     },
     {
         title: "Students",
-        href: "/stdlist"
+        href: "/stdlist",
+        id: "2"
     },
     {
         title: "Attendance",
-        href: "/attendance"
+        href: "/attendance",
+        id: "3"
     }
 ]
 
@@ -62,8 +65,12 @@ function AdminLayout(props) {
             <Divider />
             <List>
                 {MenuItems.map((obj, index) => (
-                    <NavLink to={obj.href}>
-                        <ListItem key={index} disablePadding>
+                    <NavLink style={{
+                        color: "black",
+                        fontWeight: "500",
+                        textDecoration: "none"
+                    }} to={obj.href}>
+                        <ListItem key={MenuItems.id} disablePadding>
                             <ListItemButton>
                                 <ListItemIcon>
                                     {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
