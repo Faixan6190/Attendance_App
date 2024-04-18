@@ -9,6 +9,7 @@ import Paper from '@mui/material/Paper';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase';
 
+
 function createData(name, calories, fat, carbs, protein) {
     return { name, calories, fat, carbs, protein };
 }
@@ -22,7 +23,7 @@ const rows = [
 ];
 
 export default function MuiTable() {
-    const [stdListData, setstdListData] = ([])
+    const [stdListData, setstdListData] = React.useState([])
     React.useEffect(() => {
         const fetchData = async () => {
             const docSnap = await getDocs(collection(db, "users"))
@@ -33,6 +34,7 @@ export default function MuiTable() {
                 }
             })
             setstdListData(tempArr)
+            console.log(tempArr, "tempArr")
         }
         fetchData()
     }, [])
@@ -51,31 +53,21 @@ export default function MuiTable() {
                     </TableRow>
                 </TableHead>
                 <TableBody>
-                    <TableRow
-                        key={row.name}
-                        sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
-                        <TableCell component="th" scope="row">
-                            Faizan
-                        </TableCell>
-                        <TableCell align="right">Sabar rkho</TableCell>
-                        <TableCell align="right">Sabar rkho</TableCell>
-                        <TableCell align="right">Sabar rkho</TableCell>
-                        <TableCell align="right">Sabar rkho</TableCell>
-                    </TableRow>
-                    {/* {rows.map((row) => (
-                        <TableRow
-                            key={row.name}
-                            sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
-                        >
-                            <TableCell component="th" scope="row">
-                                {row.name}
-                            </TableCell>
-                            <TableCell align="right">{row.calories}</TableCell>
-                            <TableCell align="right">{row.fat}</TableCell>
-                            <TableCell align="right">{row.carbs}</TableCell>
-                            <TableCell align="right">{row.protein}</TableCell>
-                        </TableRow>
-                    ))} */}
+                    {
+                        stdListData.map(std => {
+                            return (
+                                <TableRow
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+                                    <TableCell component="th" scope="row">
+                                        Faizan
+                                    </TableCell>
+                                    <TableCell align="right">Sabar rkho</TableCell>
+                                    <TableCell align="right">Sabar rkho</TableCell>
+                                    <TableCell align="right">Sabar rkho</TableCell>
+                                    <TableCell align="right">Sabar rkho</TableCell>
+                                </TableRow>
+                            )
+                        })}
                 </TableBody>
             </Table>
         </TableContainer>
