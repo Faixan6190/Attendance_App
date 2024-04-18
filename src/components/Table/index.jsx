@@ -65,6 +65,7 @@ export default function MuiTable() {
                                     <TableCell align="right">Sabar rkho</TableCell>
                                     <TableCell align="right">Sabar rkho</TableCell>
                                     <TableCell align="right">Sabar rkho</TableCell>
+                                    <TableCell align="right">Sabar rkho</TableCell>
                                 </TableRow>
                             )
                         })}
