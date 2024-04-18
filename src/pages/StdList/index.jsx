@@ -1,5 +1,5 @@
 import React from 'react'
-import { AdminLayout } from '../../components'
+import { AdminLayout, MuiTable } from '../../components'
 import { Divider } from '@mui/material'
 
 const StdList = () => {
@@ -7,6 +7,7 @@ const StdList = () => {
         <AdminLayout>
             <h1>Students</h1>
             <Divider />
+            <MuiTable />
         </AdminLayout >
     )
 }
