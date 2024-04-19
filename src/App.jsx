@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import AuthRoute from "./routes/AuthRoute";
 import AdminProtectedRoute, { StdProtectedRoute } from "./routes/ProtectedRoute";
 import StdList from "./pages/StdList";
+import StdPortal from "./pages/Portal";
 
 function App() {
   return (
@@ -22,7 +23,7 @@ function App() {
           <Route path="/stdlist" element={<StdList />} />
         </Route>
         <Route element={<StdProtectedRoute />}>
-          <Route path="/portal" element={<Portal />} />
+          <Route path="/portal" element={<StdPortal />} />
         </Route>
       </Routes>
       <ToastContainer
@@ -40,10 +41,6 @@ function App() {
       />
     </>
   );
-}
-
-const Portal = () => {
-  return <h1>Portal</h1>
 }
 
 export default App;
