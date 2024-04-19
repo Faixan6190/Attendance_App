@@ -9,6 +9,7 @@ import AuthRoute from "./routes/AuthRoute";
 import AdminProtectedRoute, { StdProtectedRoute } from "./routes/ProtectedRoute";
 import StdList from "./pages/StdList";
 import StdPortal from "./pages/Portal";
+import Settings from "./pages/Settings";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         </Route>
         <Route element={<StdProtectedRoute />}>
           <Route path="/portal" element={<StdPortal />} />
+          <Route path="/setting" element={<Settings />} />
         </Route>
       </Routes>
       <ToastContainer

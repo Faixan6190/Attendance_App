@@ -3,9 +3,7 @@ import StdLayout from '../../components/StdLayout'
 
 const StdPortal = () => {
     return (
-        <StdLayout>
-            <h1>Attendance</h1>
-        </StdLayout>
+        <h1>Attendance</h1>
     )
 }
 
