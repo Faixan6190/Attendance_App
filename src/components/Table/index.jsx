@@ -10,18 +10,6 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 
-function createData(name, calories, fat, carbs, protein) {
-    return { name, calories, fat, carbs, protein };
-}
-
-const rows = [
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-];
-
 export default function MuiTable() {
     const [stdListData, setstdListData] = React.useState([])
     React.useEffect(() => {
@@ -64,7 +52,7 @@ export default function MuiTable() {
                                     <TableCell align="right">{std.course}</TableCell>
                                     <TableCell align="right">{std.email}</TableCell>
                                     <TableCell align="right">{std.isActive ? "Active" : "InActive"}</TableCell>
-                                    <TableCell align="right">Sabar rkho</TableCell>
+                                    <TableCell align="right">edit</TableCell>
                                 </TableRow>
                             )
                         })}
