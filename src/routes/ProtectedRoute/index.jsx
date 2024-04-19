@@ -1,5 +1,6 @@
 import React from 'react'
 import { Outlet, Navigate } from 'react-router-dom'
+import StdLayout from '../../components/StdLayout'
 
 const AdminProtectedRoute = () => {
     return (
@@ -13,7 +14,10 @@ const StdProtectedRoute = () => {
     return (
         localStorage.getItem("uid") ?
             JSON.parse(localStorage.getItem("user")).type == "std" ?
-                < Outlet /> : <Navigate to={"/dashboard"} /> : <Navigate to={"/"} />
+                <StdLayout>
+                    < Outlet />
+                </StdLayout>
+                : <Navigate to={"/dashboard"} /> : <Navigate to={"/"} />
     )
 }
 

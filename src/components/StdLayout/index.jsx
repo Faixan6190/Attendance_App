@@ -6,42 +6,34 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Divider from '@mui/material/Divider';
 import Drawer from '@mui/material/Drawer';
 import IconButton from '@mui/material/IconButton';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import MailIcon from '@mui/icons-material/Mail';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { NavLink } from 'react-router-dom';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
-import PeopleIcon from '@mui/icons-material/People';
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import SettingsIcon from '@mui/icons-material/Settings';
 
 const drawerWidth = 240;
 
 const MenuItems = [
     {
-        title: "Add Student",
-        href: "/dashboard",
-        icon: <AddCircleIcon />
+        title: "Dashboard",
+        href: "/portal",
+        icon: <DashboardIcon />
     },
     {
-        title: "Students",
-        href: "/stdlist",
-        icon: <PeopleIcon />
+        title: "Setting",
+        href: "/setting",
+        icon: <SettingsIcon />
     },
-    {
-        title: "Attendance",
-        href: "/attendance",
-        icon: <PeopleIcon />
-
-    }
 ]
 
-function AdminLayout(props) {
+function StdLayout(props) {
     const { window, children } = props;
     const [mobileOpen, setMobileOpen] = React.useState(false);
     const [isClosing, setIsClosing] = React.useState(false);
@@ -110,7 +102,7 @@ function AdminLayout(props) {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h5" noWrap component="div">
-                        Admin Portal
+                        Student Portal
                     </Typography>
                 </Toolbar>
             </AppBar>
@@ -158,7 +150,7 @@ function AdminLayout(props) {
     );
 }
 
-AdminLayout.propTypes = {
+StdLayout.propTypes = {
     /**
      * Injected by the documentation to work in an iframe.
      * Remove this when copying and pasting into your project.
@@ -166,4 +158,4 @@ AdminLayout.propTypes = {
     window: PropTypes.func,
 };
 
-export default AdminLayout;
+export default StdLayout;

@@ -1,8 +1,11 @@
 import React from 'react'
+import StdLayout from '../../components/StdLayout'
 
 const StdPortal = () => {
     return (
-        <div>StdPortal</div>
+        <StdLayout>
+            <h1>Attendance</h1>
+        </StdLayout>
     )
 }
 
