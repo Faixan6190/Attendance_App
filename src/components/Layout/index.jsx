@@ -17,22 +17,27 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { NavLink } from 'react-router-dom';
-
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import PeopleIcon from '@mui/icons-material/People';
 
 const drawerWidth = 240;
 
 const MenuItems = [
     {
         title: "Add Student",
-        href: "/dashboard"
+        href: "/dashboard",
+        icon: <AddCircleIcon />
     },
     {
         title: "Students",
-        href: "/stdlist"
+        href: "/stdlist",
+        icon: <PeopleIcon />
     },
     {
         title: "Attendance",
-        href: "/attendance"
+        href: "/attendance",
+        icon: <PeopleIcon />
+
     }
 ]
 
@@ -70,7 +75,7 @@ function AdminLayout(props) {
                         <ListItem disablePadding>
                             <ListItemButton>
                                 <ListItemIcon>
-                                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                                    {obj.icon}
                                 </ListItemIcon>
                                 <ListItemText primary={obj.title} />
                             </ListItemButton>

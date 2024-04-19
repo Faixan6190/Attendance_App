@@ -52,7 +52,8 @@ const Dashboard = () => {
                 name: fullName,
                 type: "std",
                 course,
-                imageURL
+                imageURL,
+                isActive: true
             }
             await setDoc(doc(db, "users", userID), obj)
             ToastAlert("Std Created!", "success")
