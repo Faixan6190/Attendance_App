@@ -59,12 +59,11 @@ export default function MuiTable() {
                                 <TableRow
                                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
                                     <TableCell component="th" scope="row">
-                                        Faizan
+                                        {std.name}
                                     </TableCell>
-                                    <TableCell align="right">Sabar rkho</TableCell>
-                                    <TableCell align="right">Sabar rkho</TableCell>
-                                    <TableCell align="right">Sabar rkho</TableCell>
-                                    <TableCell align="right">Sabar rkho</TableCell>
+                                    <TableCell align="right">{std.course}</TableCell>
+                                    <TableCell align="right">{std.email}</TableCell>
+                                    <TableCell align="right">{std.isActive ? "Active" : "InActive"}</TableCell>
                                     <TableCell align="right">Sabar rkho</TableCell>
                                 </TableRow>
                             )
