@@ -1,7 +1,7 @@
 import { doc, getDoc } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { db } from "../../firebase"
-import { Box, Grid } from '@mui/material'
+import { Box, Button, Grid } from '@mui/material'
 import { InputField } from "../../components"
 import EditIcon from '@mui/icons-material/Edit';
 
@@ -30,20 +30,20 @@ const Settings = () => {
         }
         fetchUser()
     }, [])
-    console.log(userData, "userData")
+    // console.log(userData, "userData")
 
     return (
         <>
-            <Box>
+            <Box display={"flex"} alignItems={"center"} gap="20px">
                 <h1>PROFILE</h1>
-                <EditIcon />
+                <EditIcon sx={{ cursor: "pointer" }} onClick={() => setdisabledField(!disabledField)} />
             </Box>
             <Grid container mt={2} columnSpacing={5} rowSpacing={3}>
                 <Grid item sm={6}>
-                    <InputField id="fullName" label="Full Name" value={fullName} onChange={(e) => setFullName(e.target.value)} />
+                    <InputField id="fullName" label="Full Name" value={fullName} onChange={(e) => setFullName(e.target.value)} disabled={disabledField} />
                 </Grid>
                 <Grid item sm={6}>
-                    <InputField id="course" label="Course" value={course} onChange={(e) => setCourse(e.target.value)} />
+                    <InputField id="course" label="Course" value={course} onChange={(e) => setCourse(e.target.value)} disabled={disabledField} />
                 </Grid>
                 <Grid item sm={6}>
                     <InputField id="email" disabled label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
@@ -53,11 +53,14 @@ const Settings = () => {
             </Grid> */}
                 <Grid item sm={12}>
                     {/* <button onClick={handleAddStd} disabled={isLoading} className="button" style={{ verticalAlign: "middle" }}>   {isLoading ? 'Loading...' : ''}<span>Add Student</span></button> */}
-                    <button className="button" style={{ verticalAlign: "middle" }}>
+                    {/* <Button disabled={disabledField} className="button" style={{ verticalAlign: "middle" }}>
                         {isLoading ? <span><Loader /></span> : <span>EDIT</span>}
-                    </button>
+                    </Button> */}
+                    <Button disabled={disabledField} sx={{ width: "100%" }} variant="contained">
+                        Save
+                    </Button>
                 </Grid>
-            </Grid>
+            </Grid >
         </>
 
     )
