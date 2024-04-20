@@ -70,7 +70,7 @@ const Dashboard = () => {
                 <h1>Add Student</h1>
                 <Divider />
                 <Container>
-                    <Grid container mt={2} columnSpacing={5} rowSpacing={3}>
+                    <Grid container mt={2} columnSpacing={5} rowSpacing={5}>
                         <Grid item sm={6}>
                             <InputField id="fullName" label="Full Name" value={fullName} onChange={(e) => setFullName(e.target.value)} />
                         </Grid>

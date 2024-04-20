@@ -1,8 +1,9 @@
-import { doc, getDoc } from 'firebase/firestore'
+import { doc, getDoc, updateDoc } from 'firebase/firestore'
 import React, { useEffect, useState } from 'react'
 import { db } from "../../firebase"
 import { Box, Button, Grid } from '@mui/material'
 import { InputField } from "../../components"
+import { ToastAlert } from "../../utils/toast"
 import EditIcon from '@mui/icons-material/Edit';
 
 const Settings = () => {
@@ -24,6 +25,7 @@ const Settings = () => {
                 setFullName(user.data().name)
                 setEmail(user.data().email)
                 setCourse(user.data().course)
+                setstdimage(user.data().imageURL)
             } catch (error) {
                 ToastAlert(error.code || error.message, "error")
             }
@@ -31,14 +33,28 @@ const Settings = () => {
         fetchUser()
     }, [])
     // console.log(userData, "userData")
-
+    const saveHandler = async () => {
+        try {
+            const UID = localStorage.getItem("uid")
+            await updateDoc(doc(db, "users", UID)), {
+                name: fullName,
+                course
+            }
+            ToastAlert("Edit Successfully", "success")
+        } catch (error) {
+            ToastAlert(error.code || error.message, "error")
+        }
+    }
     return (
         <>
             <Box display={"flex"} alignItems={"center"} gap="20px">
                 <h1>PROFILE</h1>
                 <EditIcon sx={{ cursor: "pointer" }} onClick={() => setdisabledField(!disabledField)} />
             </Box>
-            <Grid container mt={2} columnSpacing={5} rowSpacing={3}>
+            <Grid container mt={2} columnSpacing={5} rowSpacing={5}>
+                <Grid item sm={12} textAlign={"center"}>
+                    <Box component={"img"} src={stdimage} alt="image" width={150} height={150} sx={{ objectFit: "contain" }} />
+                </Grid>
                 <Grid item sm={6}>
                     <InputField id="fullName" label="Full Name" value={fullName} onChange={(e) => setFullName(e.target.value)} disabled={disabledField} />
                 </Grid>
@@ -56,7 +72,7 @@ const Settings = () => {
                     {/* <Button disabled={disabledField} className="button" style={{ verticalAlign: "middle" }}>
                         {isLoading ? <span><Loader /></span> : <span>EDIT</span>}
                     </Button> */}
-                    <Button disabled={disabledField} sx={{ width: "100%" }} variant="contained">
+                    <Button onClick={saveHandler} disabled={disabledField} sx={{ width: "100%" }} variant="contained">
                         Save
                     </Button>
                 </Grid>
