@@ -1,9 +1,12 @@
 import React from 'react'
-import StdLayout from '../../components/StdLayout'
+import OutlinedCard from '../../components/AttendanceCard'
 
 const StdPortal = () => {
     return (
-        <h1>Attendance</h1>
+        <>
+            <h1>Attendance</h1>
+            <OutlinedCard />
+        </>
     )
 }
 
