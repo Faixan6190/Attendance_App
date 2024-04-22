@@ -7,6 +7,7 @@ import { db } from "../../firebase";
 
 const StdPortal = () => {
     const [stdData, setStdData] = useState("")
+    const [refresh, setRefresh] = useState(false)
     useEffect(() => {
         const fetchUser = async () => {
             try {
@@ -18,12 +19,12 @@ const StdPortal = () => {
             }
         }
         fetchUser()
-    }, [])
+    }, [refresh])
     console.log("stdData", stdData)
     return (
         <>
             <h1>Attendance</h1>
-            <OutlinedCard stdData={stdData} />
+            <OutlinedCard stdData={stdData} setRefresh={setRefresh} refresh={refresh} />
         </>
     )
 }
