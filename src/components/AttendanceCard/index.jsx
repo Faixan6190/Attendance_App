@@ -45,7 +45,8 @@ export default function OutlinedCard({ stdData, setRefresh, refresh }) {
                 userID: stdData.id,
                 name: stdData.name,
                 checkIn: stdData.checkIn,
-                checkOut: checkOut
+                checkOut: checkOut,
+                course: stdData.course
             })
             setRefresh(!refresh)
 

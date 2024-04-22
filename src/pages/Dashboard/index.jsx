@@ -33,7 +33,6 @@ const Dashboard = () => {
     const [stdimage, setstdimage] = useState("")
     const [isLoading, setIsLoading] = useState(false);
 
-
     // console.log("stdimage", stdimage)
 
     const handleAddStd = async () => {
