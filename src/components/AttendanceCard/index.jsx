@@ -5,8 +5,9 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { doc, updateDoc } from 'firebase/firestore';
+import { addDoc, collection, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
+import { ToastAlert } from "../../utils/toast"
 
 const bull = (
     <Box
@@ -17,31 +18,42 @@ const bull = (
     </Box>
 );
 
-const handleCheckIn = () => {
-    const checkIn = new Date().toDateString() + " " + new Date().toLocaleTimeString()
-    const UID = localStorage.getItem("uid")
-    try {
-        updateDoc(doc(db, "users", UID), {
-            checkIn: checkIn
-        })
-    } catch (error) {
+export default function OutlinedCard({ stdData, setRefresh, refresh }) {
 
+    const handleCheckIn = async () => {
+        try {
+            const checkIn = new Date().toDateString() + " " + new Date().toLocaleTimeString()
+            const UID = localStorage.getItem("uid")
+            await updateDoc(doc(db, "users", UID), {
+                checkIn: checkIn
+            })
+            setRefresh(!refresh)
+        } catch (error) {
+            ToastAlert(error.code || error.message, "error")
+        }
     }
-}
 
-const handleCheckOut = () => {
-    const checkOut = new Date().toDateString() + " " + new Date().toLocaleTimeString()
-    const UID = localStorage.getItem("uid")
-    try {
-        updateDoc(doc(db, "users", UID), {
-            checkOut: checkOut
-        })
-    } catch (error) {
+    const handleCheckOut = async () => {
+        try {
+            const checkOut = new Date().toDateString() + " " + new Date().toLocaleTimeString()
+            const UID = localStorage.getItem("uid")
+            await updateDoc(doc(db, "users", UID), {
+                checkOut: checkOut
+            })
 
+            await addDoc(collection(db, "attendance"), {
+                userID: stdData.id,
+                name: stdData.name,
+                checkIn: stdData.checkIn,
+                checkOut: checkOut
+            })
+            setRefresh(!refresh)
+
+        } catch (error) {
+            ToastAlert(error.code || error.message, "error")
+        }
     }
-}
 
-export default function OutlinedCard({ stdData }) {
     return (
         <Box sx={{ minWidth: 275 }}>
             <Card variant="outlined">

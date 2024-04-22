@@ -20,7 +20,7 @@ const StdPortal = () => {
         }
         fetchUser()
     }, [refresh])
-    console.log("stdData", stdData)
+    // console.log("stdData", stdData)
     return (
         <>
             <h1>Attendance</h1>
