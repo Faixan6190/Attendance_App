@@ -10,20 +10,8 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebase';
 
 
-export default function AttendanceTable() {
-    const [attendanceListData, setattendanceListData] = React.useState([])
-    React.useEffect(() => {
-        const fetchData = async () => {
-            const docSnap = await getDocs(collection(db, "attendance"))
-            const tempArr = []
-            docSnap.forEach((user) => {
-                tempArr.push({ ...user.data(), id: user.id })
-            })
-            setattendanceListData(tempArr)
-        }
-        fetchData()
-    }, [])
-    console.log(attendanceListData, "attendancelisdata")
+export default function AttendanceTable({ attendanceListData }) {
+
     return (
         <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
