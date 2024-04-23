@@ -3,7 +3,7 @@ import { AdminLayout } from '../../components'
 import { Divider, Stack } from '@mui/material'
 import AttendanceTable from '../../components/AttendanceTable'
 import DropDown from '../../components/Dropdown/index.'
-import { collection, getDocs } from 'firebase/firestore'
+import { collection, getDocs, query, where } from 'firebase/firestore'
 import { db } from '../../firebase'
 
 const Attendance = () => {
@@ -21,8 +21,18 @@ const Attendance = () => {
     }, [])
     console.log(attendanceListData, "attendancelisdata")
 
-    const handleCourseFilter = (e, value) => {
+    const handleCourseFilter = async (e, value) => {
         console.log("handleCourseFilter", value)
+        const q = query(collection(db, "attendance"), where("course", "==", value.label));
+
+        const tempArr = []
+        const querySnapshot = await getDocs(q);
+        querySnapshot.forEach((doc) => {
+            // doc.data() is never undefined for query doc snapshots
+            console.log(doc.id, " => ", doc.data());
+            tempArr.push({ ...doc.data(), id: doc.id })
+        });
+        setattendanceListData(tempArr)
     }
 
     return (
@@ -32,7 +42,7 @@ const Attendance = () => {
                 <DropDown handleCourseFilter={handleCourseFilter} />
             </Stack>
             <Divider />
-            <AttendanceTable />
+            <AttendanceTable attendanceListData={attendanceListData} />
         </AdminLayout >
     )
 }
