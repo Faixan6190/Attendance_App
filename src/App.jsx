@@ -10,6 +10,7 @@ import AdminProtectedRoute, { StdProtectedRoute } from "./routes/ProtectedRoute"
 import StdList from "./pages/StdList";
 import StdPortal from "./pages/Portal";
 import Settings from "./pages/Settings";
+import Attendance from "./pages/Attendance";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         <Route element={<AdminProtectedRoute />}>
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/stdlist" element={<StdList />} />
+          <Route path="/attendance" element={<Attendance />} />
         </Route>
         <Route element={<StdProtectedRoute />}>
           <Route path="/portal" element={<StdPortal />} />
