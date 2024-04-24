@@ -17,6 +17,8 @@ import Typography from '@mui/material/Typography';
 import { NavLink } from 'react-router-dom';
 import DashboardIcon from '@mui/icons-material/Dashboard';
 import SettingsIcon from '@mui/icons-material/Settings';
+import PowerSettingsNewIcon from '@mui/icons-material/PowerSettingsNew';
+import { Stack } from '@mui/material';
 
 const drawerWidth = 240;
 
@@ -81,6 +83,11 @@ function StdLayout(props) {
     // Remove this const when copying and pasting into your project.
     const container = window !== undefined ? () => window().document.body : undefined;
 
+    const logout = () => {
+        localStorage.clear()
+        location.replace("/")
+    }
+
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -101,9 +108,12 @@ function StdLayout(props) {
                     >
                         <MenuIcon />
                     </IconButton>
-                    <Typography variant="h5" noWrap component="div">
-                        Student Portal
-                    </Typography>
+                    <Stack direction={"row"} justifyContent={"space-between"} alignItems={"center"} width={"100%"}>
+                        <Typography variant="h5" noWrap component="div">
+                            Student Portal
+                        </Typography>
+                        <PowerSettingsNewIcon sx={{ cursor: "pointer" }} onClick={logout} />
+                    </Stack>
                 </Toolbar>
             </AppBar>
             <Box

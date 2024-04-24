@@ -5,9 +5,10 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { addDoc, collection, doc, updateDoc } from 'firebase/firestore';
+import { getDoc, addDoc, collection, setDoc, doc, updateDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { ToastAlert } from "../../utils/toast"
+import moment from 'moment';
 
 const bull = (
     <Box
@@ -19,14 +20,24 @@ const bull = (
 );
 
 export default function OutlinedCard({ stdData, setRefresh, refresh }) {
+    const [userData, setUserData] = React.useState(null);
+    const [isDisabled, setDisabled] = React.useState(true);
+    const UID = localStorage.getItem("uid")
 
     const handleCheckIn = async () => {
         try {
             const checkIn = new Date().toDateString() + " " + new Date().toLocaleTimeString()
-            const UID = localStorage.getItem("uid")
             await updateDoc(doc(db, "users", UID), {
                 checkIn: checkIn
             })
+
+            await setDoc(doc(db, "attendance", UID), {
+                userID: stdData.id,
+                name: stdData.name,
+                checkIn,
+                course: stdData.course
+            })
+
             setRefresh(!refresh)
         } catch (error) {
             ToastAlert(error.code || error.message, "error")
@@ -41,12 +52,8 @@ export default function OutlinedCard({ stdData, setRefresh, refresh }) {
                 checkOut: checkOut
             })
 
-            await addDoc(collection(db, "attendance"), {
-                userID: stdData.id,
-                name: stdData.name,
-                checkIn: stdData.checkIn,
+            await updateDoc(doc(db, "attendance", UID), {
                 checkOut: checkOut,
-                course: stdData.course
             })
             setRefresh(!refresh)
 
@@ -55,6 +62,27 @@ export default function OutlinedCard({ stdData, setRefresh, refresh }) {
         }
     }
 
+    const getData = async () => {
+        const userData = await getDoc(doc(db, 'attendance', UID));
+        setUserData(userData.data());
+    }
+
+    React.useEffect(() => {
+        getData();
+    }, [refresh])
+
+
+    React.useEffect(() => {
+
+        const checkAndDisable = () => {
+            const isCheckoutDisabled = userData?.checkIn && moment().diff(moment(userData.checkIn).add(23, "hour"), 'hour') >= 0 || !!userData?.checkOut;
+            setDisabled(isCheckoutDisabled)
+        };
+        setInterval(checkAndDisable, 6000);
+        clearInterval(checkAndDisable)
+    }, [])
+
+    console.log(isDisabled, 'id')
     return (
         <Box sx={{ minWidth: 275 }}>
             <Card variant="outlined">
@@ -76,8 +104,8 @@ export default function OutlinedCard({ stdData, setRefresh, refresh }) {
                     </CardContent>
                     <CardActions>
                         {
-                            stdData.checkIn ?
-                                <Button variant='contained' onClick={handleCheckOut}>Check Out</Button> :
+                            userData?.checkIn ?
+                                <Button variant='contained' disabled={isDisabled} onClick={handleCheckOut}>Check Out</Button> :
                                 <Button variant='contained' onClick={handleCheckIn}>Check In</Button>
                         }
                     </CardActions>
