@@ -71,7 +71,6 @@ export default function OutlinedCard({ stdData, setRefresh, refresh }) {
         getData();
     }, [refresh])
 
-
     React.useEffect(() => {
 
         const checkAndDisable = () => {
