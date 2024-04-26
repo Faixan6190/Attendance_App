@@ -72,14 +72,27 @@ export default function OutlinedCard({ stdData, setRefresh, refresh }) {
     }, [refresh])
 
     React.useEffect(() => {
-
         const checkAndDisable = () => {
-            const isCheckoutDisabled = userData?.checkIn && moment().diff(moment(userData.checkIn).add(23, "hour"), 'hour') >= 0 || !!userData?.checkOut;
-            setDisabled(isCheckoutDisabled)
+            const isCheckoutDisabled = userData?.checkIn && (moment().diff(moment(userData.checkIn), 'hour') >= 23 || !!userData?.checkOut);
+            setDisabled(isCheckoutDisabled);
         };
-        setInterval(checkAndDisable, 6000);
-        clearInterval(checkAndDisable)
-    }, [])
+
+        // Call checkAndDisable immediately and then every 6 seconds
+        const intervalId = setInterval(checkAndDisable, 6000);
+
+        // Cleanup function to clear the interval when component unmounts
+        return () => clearInterval(intervalId);
+    }, [userData]); // Re-run effect whenever userData changes
+
+    // React.useEffect(() => {
+
+    //     const checkAndDisable = () => {
+    //         const isCheckoutDisabled = userData?.checkIn && moment().diff(moment(userData.checkIn).add(23, "hour"), 'hour') >= 0 || !!userData?.checkOut;
+    //         setDisabled(isCheckoutDisabled)
+    //     };
+    //     setInterval(checkAndDisable, 6000);
+    //     clearInterval(checkAndDisable)
+    // }, [])
 
     console.log(isDisabled, 'id')
     return (
