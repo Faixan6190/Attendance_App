@@ -94,6 +94,7 @@ export default function OutlinedCard({ stdData, setRefresh, refresh }) {
     //     clearInterval(checkAndDisable)
     // }, [])
 
+
     console.log(isDisabled, 'id')
     return (
         <Box sx={{ minWidth: 275 }}>
