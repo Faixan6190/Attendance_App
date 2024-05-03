@@ -122,7 +122,6 @@ export default function OutlinedCard({ stdData, setRefresh, refresh }) {
                                 <Button variant='contained' onClick={handleCheckIn}>Check In</Button>
                         }
                     </CardActions>
-
                 </React.Fragment>
             </Card>
         </Box >
