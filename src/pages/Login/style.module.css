@@ -30,3 +30,13 @@
   color: #757575;
   color: white;
 }
+@media only screen and (max-width: 767px) {
+  .loginForm {
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .loginForm {
+    width: 100%;
+  }
+}
