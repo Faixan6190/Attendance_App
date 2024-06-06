@@ -1,8 +1,7 @@
 import "./App.css";
 import Login from "./pages/Login";
-import Signup from "./pages/Sign Up";
-import { Routes, Route } from "react-router-dom"
-import 'react-toastify/dist/ReactToastify.css';
+import { Routes, Route } from "react-router-dom";
+import "react-toastify/dist/ReactToastify.css";
 import { Bounce, ToastContainer } from "react-toastify";
 import Dashboard from "./pages/Dashboard";
 import AuthRoute from "./routes/AuthRoute";
@@ -44,7 +43,6 @@ function App() {
         transition={Bounce}
       />
     </>
-
   );
 }
 
