@@ -65,6 +65,7 @@ const Dashboard = () => {
     <>
       <AdminLayout>
         <h1>Add Student</h1>
+
         <Divider />
         <Container>
           <Grid container mt={2} columnSpacing={5} rowSpacing={5}>
