@@ -100,7 +100,7 @@ const Dashboard = () => {
                     <Loader />
                   </span>
                 ) : (
-                  <span>Add Student</span>
+                  <span>Add Studenst</span>
                 )}
               </button>
             </Grid>
