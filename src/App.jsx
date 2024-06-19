@@ -39,7 +39,7 @@ function App() {
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        theme="Dark"
+        theme="light"
         transition={Bounce}
       />
     </>
