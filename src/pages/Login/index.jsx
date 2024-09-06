@@ -13,7 +13,7 @@ const Login = () => {
   const [passwordShow, setPasswordShow] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  
+
   const loginHandler = (event) => {
     event.preventDefault();
     console.log("loginHandler");
@@ -22,7 +22,7 @@ const Login = () => {
       ToastAlert("required fields are missing", "warning");
       return;
     }
-    // console.log("email, password", email, password)
+
     signInWithEmailAndPassword(auth, email, password)
       .then(async (userCredential) => {
         const userID = userCredential.user.uid;
